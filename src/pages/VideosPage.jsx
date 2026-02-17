@@ -240,6 +240,13 @@ export default function VideosPage() {
                                         </div>
                                     </div>
                                     <div className="card-body">
+                                        <div className="uploader-info">
+                                            <img src={video.userId?.image || "https://ui-avatars.com/api/?name=Admin"} alt="" className="uploader-avatar" />
+                                            <div className="uploader-text">
+                                                <span className="uploaded-label">Uploaded by</span>
+                                                <span className="uploader-name">{video.userId?.name || "System Admin"}</span>
+                                            </div>
+                                        </div>
                                         <h3>{video.caption || "Untitled Video"}</h3>
                                         <div className="card-meta">
                                             <span className="category-pill">
