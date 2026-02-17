@@ -1,0 +1,184 @@
+.categories-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: left;
+}
+
+.categories-page h1 {
+  margin-bottom: 1rem;
+}
+
+.categories-controls {
+  margin-bottom: 1rem;
+}
+
+.categories-controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.error-message {
+  background: #ff4444;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.category-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.category-form h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.form-row input[type="text"],
+.form-row input[type="url"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: inherit;
+}
+
+.image-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.file-input {
+  font-size: 0.875rem;
+}
+
+.upload-hint {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.image-url-input {
+  margin-top: 0.25rem;
+}
+
+.form-preview {
+  display: block;
+  margin-top: 0.5rem;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+.checkbox-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.required {
+  color: #ff6b6b;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.form-actions button {
+  padding: 0.5rem 1rem;
+}
+
+.categories-list h2 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.categories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.categories-table th,
+.categories-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #333;
+  text-align: left;
+}
+
+.categories-table th {
+  font-weight: 600;
+}
+
+.categories-table tr.inactive {
+  opacity: 0.6;
+}
+
+.category-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.no-image {
+  color: #888;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-delete-confirm {
+  margin-right: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-delete {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+.btn-delete:hover {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+.btn-delete-confirm {
+  color: #ff4444;
+  border-color: #ff4444;
+}
+
+@media (prefers-color-scheme: light) {
+  .category-form {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .form-row input[type="text"],
+  .form-row input[type="url"] {
+    background: #fff;
+    border-color: #ccc;
+  }
+}
