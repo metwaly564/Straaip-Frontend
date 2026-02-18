@@ -237,14 +237,15 @@
   background: #0f172a;
 }
 
-.card-thumb {
+.card-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: scale 0.5s ease;
+  background: black;
 }
 
-.premium-video-card:hover .card-thumb {
+.premium-video-card:hover .card-video {
   scale: 1.05;
 }
 
@@ -339,6 +340,7 @@
   height: 3rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

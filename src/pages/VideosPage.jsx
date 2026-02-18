@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./VideosPage.css";
-import { getVideos, createVideo, updateVideo, deleteVideo } from "../api/videos";
+import { getVideos, createVideo, updateVideo, deleteVideo, getAssetUrl } from "../api/videos";
 import { getCategories } from "../api/categories";
 
 export default function VideosPage() {
@@ -227,13 +227,14 @@ export default function VideosPage() {
                             {videos.map((video) => (
                                 <div key={video._id} className="premium-video-card">
                                     <div className="video-prev-container">
-                                        {video.videoImage ? (
-                                            <img src={video.videoImage} alt={video.caption} className="card-thumb" />
-                                        ) : (
-                                            <div className="thumb-placeholder">
-                                                <span className="play-icon">▶</span>
-                                            </div>
-                                        )}
+                                        <video
+                                            src={getAssetUrl(video.videoUrl)}
+                                            poster={getAssetUrl(video.videoImage)}
+                                            className="card-video"
+                                            controls
+                                            playsInline
+                                            preload="none"
+                                        />
                                         <div className="card-badges">
                                             <span className="duration-badge">{video.videoTime}s</span>
                                             {video.price > 0 && <span className="price-badge">${video.price}</span>}

@@ -1,4 +1,18 @@
-const API_BASE = import.meta.env.VITE_API_URL || "https://admin.straipp.com";
+export const API_BASE = import.meta.env.VITE_API_URL || "https://admin.straipp.com";
+
+/**
+ * Ensures an asset URL is absolute.
+ * If the URL is relative, it prefixes it with API_BASE.
+ */
+export function getAssetUrl(url) {
+    if (!url) return "";
+    if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
+        return url;
+    }
+    // Remove leading slash if present to avoid double slashes
+    const cleanPath = url.startsWith("/") ? url.slice(1) : url;
+    return `${API_BASE}/${cleanPath}`;
+}
 
 async function request(path, options = {}) {
     const url = `${API_BASE}${path}`;
