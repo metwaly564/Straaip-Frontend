@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <div className="home">
-              <h1>Straaip</h1>
+              <h1>Straaiv</h1>
               <p><Link to="/categories">Manage Categories</Link></p>
               <p><Link to="/videos">Manage Videos</Link></p>
             </div>
