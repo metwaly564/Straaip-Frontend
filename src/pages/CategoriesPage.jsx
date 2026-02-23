@@ -20,6 +20,7 @@ export default function CategoriesPage() {
 
   const [form, setForm] = useState({
     name: "",
+    nameAr: "",
     image: "",
     icon: "",
     isActive: true,
@@ -44,7 +45,7 @@ export default function CategoriesPage() {
   }, [showInactive]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const resetForm = () => {
-    setForm({ name: "", image: "", icon: "", isActive: true });
+    setForm({ name: "", nameAr: "", image: "", icon: "", isActive: true });
     setEditingId(null);
     setIsModalOpen(false);
   };
@@ -95,6 +96,7 @@ export default function CategoriesPage() {
     setEditingId(cat._id);
     setForm({
       name: cat.name,
+      nameAr: cat.nameAr || "",
       image: cat.image || "",
       icon: cat.icon || "",
       isActive: cat.isActive ?? true,
@@ -151,14 +153,25 @@ export default function CategoriesPage() {
               <h2>{editingId ? "Edit Category" : "Create Category"}</h2>
 
               <div className="form-grid">
-                <div className="form-row span-2">
-                  <label>Name <span className="required">*</span></label>
+                <div className="form-row">
+                  <label>English Name <span className="required">*</span></label>
                   <input
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Enter category name"
+                    placeholder="Enter English name"
                     required
+                  />
+                </div>
+
+                <div className="form-row">
+                  <label>Arabic Name</label>
+                  <input
+                    type="text"
+                    value={form.nameAr}
+                    onChange={(e) => setForm({ ...form, nameAr: e.target.value })}
+                    placeholder="Enter Arabic name"
+                    dir="rtl"
                   />
                 </div>
 
@@ -233,7 +246,8 @@ export default function CategoriesPage() {
             <thead>
               <tr>
                 <th>Image</th>
-                <th>Name</th>
+                <th>Name (EN)</th>
+                <th>Name (AR)</th>
                 <th>Icon</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -250,6 +264,7 @@ export default function CategoriesPage() {
                     )}
                   </td>
                   <td className="font-bold">{cat.name}</td>
+                  <td className="font-bold">{cat.nameAr || "—"}</td>
                   <td className="text-xl">{cat.icon || "—"}</td>
                   <td>
                     <span className={`status-badge ${cat.isActive ? 'active' : 'inactive'}`}>

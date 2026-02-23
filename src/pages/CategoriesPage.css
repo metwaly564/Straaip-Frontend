@@ -125,6 +125,7 @@
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   background: #f8fafc;
+  color: var(--text-main);
 }
 
 .upload-container {
