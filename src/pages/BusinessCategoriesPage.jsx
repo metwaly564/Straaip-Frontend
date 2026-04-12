@@ -37,13 +37,15 @@ export default function BusinessCategoriesPage() {
     setLoading(true);
     try {
       const res = await getBusinessCategories();
-      setCategories(res.data || []);
+      // res.data is { categories: [] }
+      setCategories(res.data?.categories || []);
     } catch (err) {
       console.error("[BusinessCategory] Fetch failed:", err);
     } finally {
       setLoading(false);
     }
   };
+
 
   const resetForm = () => {
     setForm({ name: { en: "", ar: "" }, icon: "", isActive: true });

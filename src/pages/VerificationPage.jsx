@@ -27,7 +27,9 @@ export default function VerificationPage() {
     setLoading(true);
     try {
       const res = await getVerificationRequests(activeTab);
-      setRequests(res.data || []);
+      // res.data should be an array of requests
+      const data = Array.isArray(res.data) ? res.data : [];
+      setRequests(data);
     } catch (err) {
       console.error("[Verification] Fetch failed:", err);
       // Response interceptor handles the toast notification
@@ -35,6 +37,7 @@ export default function VerificationPage() {
       setLoading(false);
     }
   };
+
 
   const handleApprove = async (id) => {
     if (!window.confirm("Are you sure you want to approve this verification request?")) return;
