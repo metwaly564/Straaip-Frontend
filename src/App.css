@@ -69,21 +69,27 @@
   margin: 1rem 0;
 }
 
-.home a {
+.home a, .home-card {
   display: inline-block;
-  padding: 0.875rem 2rem;
-  background: #6366f1;
-  color: white;
+  padding: 1.5rem 2rem;
+  background: white;
+  color: #1e293b;
   text-decoration: none;
-  border-radius: 12px;
-  font-weight: 600;
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
-  transition: transform 0.2s;
+  border-radius: 16px;
+  font-weight: 700;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #f1f5f9;
+  text-align: center;
 }
 
-.home a:hover {
-  transform: translateY(-2px);
+.home a:hover, .home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  border-color: #6366f1;
+  color: #6366f1;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
