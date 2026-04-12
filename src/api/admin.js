@@ -1,13 +1,11 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { API_BASE, ADMIN_SECRET, normalizePath } from "./config";
 
 /**
  * Admin API Service Layer
  * Uses Axios for unified request/response handling.
  */
-
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET;
 
 const adminApi = axios.create({
   baseURL: API_BASE,
@@ -58,10 +56,10 @@ adminApi.interceptors.response.use(
 
 // Verification Requests
 export const getVerificationRequests = (type = "pending", page = 1) => 
-  adminApi.get(`/admin/verificationRequest/getAll?type=${type}&page=${page}`);
+  adminApi.get(normalizePath(`/admin/verificationRequest/getAll?type=${type}&page=${page}`));
 
 export const reviewVerification = (id, status, rejectionReason) => 
-  adminApi.patch(`/admin/verificationRequest/review?verificationRequestId=${id}`, {
+  adminApi.patch(normalizePath(`/admin/verificationRequest/review?verificationRequestId=${id}`), {
     status,
     rejectionReason,
   });
@@ -69,16 +67,16 @@ export const reviewVerification = (id, status, rejectionReason) =>
 // Business Categories
 export const getBusinessCategories = (isActive) => {
   const query = isActive !== undefined ? `?isActive=${isActive}` : "";
-  return adminApi.get(`/api/admin/business-categories${query}`);
+  return adminApi.get(normalizePath(`/admin/business-categories${query}`));
 };
 
 export const createBusinessCategory = (data) => 
-  adminApi.post("/api/admin/business-categories", data);
+  adminApi.post(normalizePath("/admin/business-categories"), data);
 
 export const updateBusinessCategory = (id, data) => 
-  adminApi.patch(`/api/admin/business-categories/${id}`, data);
+  adminApi.patch(normalizePath(`/admin/business-categories/${id}`), data);
 
 export const deleteBusinessCategory = (id, hard = false) => 
-  adminApi.delete(`/api/admin/business-categories/${id}?hard=${hard}`);
+  adminApi.delete(normalizePath(`/admin/business-categories/${id}?hard=${hard}`));
 
 export default adminApi;

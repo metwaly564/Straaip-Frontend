@@ -1,7 +1,6 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
-
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+import { API_BASE, normalizePath } from "./config";
 
 const clientApi = axios.create({
   baseURL: API_BASE,
@@ -24,13 +23,13 @@ clientApi.interceptors.response.use(
  * Check if a handle (@nickname) is available
  */
 export const checkNicknameAvailability = (userName) => 
-  clientApi.get(`/api/v1/user/check-nickname?userName=${userName}`);
+  clientApi.get(normalizePath(`/v1/user/check-nickname?userName=${userName}`));
 
 /**
  * Register a new business account
  */
 export const registerBusinessAccount = (data) => 
-  clientApi.post("/api/v1/user/register", data);
+  clientApi.post(normalizePath("/v1/user/register"), data);
 
 /**
  * Fetch available activities (Business classifications)
@@ -38,19 +37,19 @@ export const registerBusinessAccount = (data) =>
  */
 import adminApi from "./admin";
 export const getActivities = (isActive = true) => 
-  adminApi.get(`/api/admin/activities?isActive=${isActive}`);
+  adminApi.get(normalizePath(`/admin/activities?isActive=${isActive}`));
 
 /**
  * Fetch interests (Content preferences)
  */
 export const getInterests = () => 
-  clientApi.get("/api/interests");
+  clientApi.get(normalizePath("/interests"));
 
 /**
  * Save user interests
  */
 export const saveUserInterests = (interestIds, token) => 
-  clientApi.post("/api/v1/user/interests", { interestIds }, {
+  clientApi.post(normalizePath("/v1/user/interests"), { interestIds }, {
     headers: { Authorization: `Bearer ${token}` }
   });
 

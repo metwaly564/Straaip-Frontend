@@ -1,7 +1,7 @@
-const API_BASE = import.meta.env.VITE_API_URL || "https://admin.straipp.com";
+import { API_BASE, normalizePath } from "./config";
 
 async function request(path, options = {}) {
-  const url = `${API_BASE}${path}`;
+  const url = `${API_BASE}${normalizePath(path)}`;
   const res = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
