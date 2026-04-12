@@ -3,6 +3,7 @@ import CategoriesPage from './pages/CategoriesPage'
 import VideosPage from './pages/VideosPage'
 import VerificationPage from './pages/VerificationPage'
 import BusinessCategoriesPage from './pages/BusinessCategoriesPage'
+import RegistrationFlow from './pages/RegistrationFlow'
 import './App.css'
 
 /**
@@ -18,6 +19,7 @@ function App() {
     { path: '/business-categories', label: 'Biz Categories', icon: '💼' },
     { path: '/verification', label: 'Verification', icon: '✔️' },
     { path: '/videos', label: 'All Videos', icon: '🎬' },
+    { path: '/register', label: 'Bizz Register', icon: '✨' },
   ];
 
   return (
@@ -100,6 +102,7 @@ function App() {
             <Route path="/business-categories" element={<BusinessCategoriesPage />} />
             <Route path="/verification" element={<VerificationPage />} />
             <Route path="/videos" element={<VideosPage />} />
+            <Route path="/register" element={<RegistrationFlow />} />
           </Routes>
         </main>
       </div>
