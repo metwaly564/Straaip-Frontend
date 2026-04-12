@@ -36,7 +36,7 @@ export const registerBusinessAccount = (data) =>
  * Fetch available activities (Business classifications)
  */
 export const getActivities = (isActive = true) => 
-  clientApi.get(`/api/admin/activities?isActive=${isActive}`);
+  clientApi.get(`/api/v1/user/activities?isActive=${isActive}`);
 
 /**
  * Fetch interests (Content preferences)
