@@ -34,9 +34,11 @@ export const registerBusinessAccount = (data) =>
 
 /**
  * Fetch available activities (Business classifications)
+ * Using adminApi to ensure headers are included for production compatibility.
  */
+import adminApi from "./admin";
 export const getActivities = (isActive = true) => 
-  clientApi.get(`/api/v1/user/activities?isActive=${isActive}`);
+  adminApi.get(`/api/admin/activities?isActive=${isActive}`);
 
 /**
  * Fetch interests (Content preferences)
