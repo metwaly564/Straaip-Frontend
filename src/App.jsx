@@ -4,6 +4,9 @@ import VideosPage from './pages/VideosPage'
 import VerificationPage from './pages/VerificationPage'
 import BusinessCategoriesPage from './pages/BusinessCategoriesPage'
 import RegistrationFlow from './pages/RegistrationFlow'
+import ActivityTypesPage from './pages/ActivityTypesPage'
+import ReportsPage from './pages/ReportsPage'
+import UsersPage from './pages/UsersPage'
 import './App.css'
 
 /**
@@ -17,8 +20,11 @@ function App() {
     { path: '/', label: 'Dashboard', icon: '🏠' },
     { path: '/categories', label: 'Video Categories', icon: '📁' },
     { path: '/business-categories', label: 'Biz Categories', icon: '💼' },
+    { path: '/activity-types', label: 'Activity Types', icon: '🏷️' },
     { path: '/verification', label: 'Verification', icon: '✔️' },
+    { path: '/users', label: 'Users', icon: '👥' },
     { path: '/videos', label: 'All Videos', icon: '🎬' },
+    { path: '/reports', label: 'Reports', icon: '🚩' },
     { path: '/register', label: 'Bizz Register', icon: '✨' },
   ];
 
@@ -100,8 +106,11 @@ function App() {
             } />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/business-categories" element={<BusinessCategoriesPage />} />
+            <Route path="/activity-types" element={<ActivityTypesPage />} />
             <Route path="/verification" element={<VerificationPage />} />
+            <Route path="/users" element={<UsersPage />} />
             <Route path="/videos" element={<VideosPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
             <Route path="/register" element={<RegistrationFlow />} />
           </Routes>
         </main>

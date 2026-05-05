@@ -1,0 +1,71 @@
+.activities-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.filter-select {
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-subtle);
+  background: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--text-main));
+  cursor: pointer;
+  min-width: 180px;
+  transition: var(--transition-smooth);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-subtle);
+  background: hsl(var(--slate-50));
+  font-size: 0.938rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  background: #ffffff;
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
+}
+
+.form-field.centered {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: hsl(var(--text-main));
+}
+
+.checkbox-wrap input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: hsl(var(--primary));
+}
+
+.row-muted td {
+  opacity: 0.5;
+}
+
+.pure-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: hsl(var(--text-muted));
+  font-size: 1rem;
+}
