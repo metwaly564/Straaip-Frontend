@@ -57,3 +57,7 @@ export async function deleteVideo(id) {
         method: "DELETE",
     });
 }
+
+export async function getInterests() {
+    return request("/api/interests");
+}

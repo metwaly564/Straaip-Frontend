@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./VideosPage.css";
-import { getVideos, createVideo, updateVideo, deleteVideo, getAssetUrl } from "../api/videos";
+import { getVideos, createVideo, updateVideo, deleteVideo, getAssetUrl, getInterests } from "../api/videos";
 import { getCategories } from "../api/categories";
 
 export default function VideosPage() {
     const [videos, setVideos] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [interests, setInterests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,15 +20,17 @@ export default function VideosPage() {
         videoTime: 0,
         price: 0,
         categoryId: "",
+        interestId: "",
     });
 
     const fetchData = async () => {
         setLoading(true);
         setError(null);
         try {
-            const [vRes, cRes] = await Promise.all([getVideos(), getCategories(true)]);
+            const [vRes, cRes, iRes] = await Promise.all([getVideos(), getCategories(true), getInterests()]);
             setVideos(vRes.data || []);
             setCategories(cRes.data || []);
+            setInterests(iRes.data?.interests || []);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -47,6 +50,7 @@ export default function VideosPage() {
             videoTime: 0,
             price: 0,
             categoryId: "",
+            interestId: "",
         });
         setEditingId(null);
         setIsModalOpen(false);
@@ -83,6 +87,7 @@ export default function VideosPage() {
             videoTime: video.videoTime || 0,
             price: video.price || 0,
             categoryId: video.categoryId?._id || video.categoryId || "",
+            interestId: video.interestId?._id || video.interestId || "",
         });
         setIsModalOpen(true);
     };
@@ -147,6 +152,22 @@ export default function VideosPage() {
                                         {categories.map((cat) => (
                                             <option key={cat._id} value={cat._id}>
                                                 {cat.icon} {cat.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <div className="form-row">
+                                    <label>Interest <span className="required">*</span></label>
+                                    <select
+                                        value={form.interestId}
+                                        onChange={(e) => setForm({ ...form, interestId: e.target.value })}
+                                        required
+                                    >
+                                        <option value="">Select Interest</option>
+                                        {interests.map((interest) => (
+                                            <option key={interest._id} value={interest._id}>
+                                                {interest.icon} {interest.name}
                                             </option>
                                         ))}
                                     </select>
@@ -253,6 +274,11 @@ export default function VideosPage() {
                                             <span className="category-pill">
                                                 {video.categoryId?.icon || "📽"} {video.categoryId?.name || "General"}
                                             </span>
+                                            {video.interestId && (
+                                                <span className="interest-pill">
+                                                    {video.interestId.icon || "✨"} {video.interestId.name}
+                                                </span>
+                                            )}
                                         </div>
                                         <div className="card-footer">
                                             <button onClick={() => handleEdit(video)} className="action-btn edit-btn">
